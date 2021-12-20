@@ -2,9 +2,20 @@ import cv2 as cv
 import os
 import numpy as np
 
+try:
+    reading = open(r"people.txt","r")
+    people_str = reading.read()
+    people_list = people_str.split()
+    print(people_list)
+    reading.close()
+except:
+    people_list = []
 
-DIR = "/home/henok/Desktop/Training/AI"
-people = ["Henok"]
+
+
+
+DIR = "./images"
+people = people_list
 
 features = []
 labels = []

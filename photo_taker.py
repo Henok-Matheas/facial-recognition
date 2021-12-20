@@ -5,20 +5,27 @@ import os
 
 
 
+
 video = cv.VideoCapture(0)
 video.set(3,640)
 video.set(4,480)
 
 name = input("your name?")
 
+
 try:
-    os.mkdir(name)
+    path = os.mkdir(os.path.join("./images",name))
+    people_file = open(r"people.txt","w")
+    written_name = name + " "
+    people_file.write(written_name)
+    people_file.close()
 except:
     print("already exists")
+    path = os.path.join("./images",name)
 
-count = 101
-while count <= 200 :
-    subject = name + "/img" + str(count) + ".jpg"
+count = 1
+while count <= 100 :
+    subject = path + "/img" + str(count) + ".jpg"
     sucess, img = video.read()
     copy = img.copy()
     cv.imshow("wee",img)
@@ -27,4 +34,4 @@ while count <= 200 :
     if cv.waitKey(1) & 0xFF == ord('q'):
         sys.exit("success")
 
-# sys.exit()
+print('photos for training model have been taken successfully!!')
