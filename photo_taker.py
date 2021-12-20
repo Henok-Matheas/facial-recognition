@@ -24,7 +24,7 @@ except:
     path = os.path.join("./images",name)
 
 count = 1
-while count <= 100 :
+while count <= 1000 :
     subject = path + "/img" + str(count) + ".jpg"
     sucess, img = video.read()
     copy = img.copy()
